@@ -7,7 +7,7 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Date</th>
+      <th>Date and Time</th>
       <th>Latitude</th>
       <th>Longitude</th>
       <th>Imgurl</th>
@@ -25,7 +25,7 @@
         <td><%= event.latitude %></td>
         <td><%= event.longitude %></td>
         <td><%= event.imgURL %></td>
-        <td><%= event.host_id_id %></td>
+        <td><%= event.user_id %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
