@@ -1,6 +1,13 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [ :show, :index ]
 
+
+  def mainpage
+    respond_to do |format|
+      format.html { render :mainpage }
+    end
+  end
 
   # GET /events
   # GET /events.json
@@ -26,6 +33,8 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+
+    @event.user = current_user
 
     respond_to do |format|
       if @event.save
@@ -59,6 +68,12 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def wee
+    respond_to do |format|
+      format.html { render :wee }
     end
   end
 
