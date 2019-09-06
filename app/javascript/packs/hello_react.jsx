@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import Wee from '../components/wee'
 import Mainpage from '../components/mainpage'
+import MapContainer from '../components/map'
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -18,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <Router>
           <div>
             <Route path="/" component={Mainpage} />
-            <Route path="/wee" component={Wee} />
           </div>
         </Router>
+        <MapContainer />
     </div>,
     document.body.appendChild(document.createElement('div')),
   )

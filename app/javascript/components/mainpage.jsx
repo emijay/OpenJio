@@ -46,20 +46,19 @@ export default class Mainpage extends React.Component{
     render(){
 
         return(
-            <div>
-                <h1>Current Events Available</h1>
+            <div className="container">
+                <h1 className="text-center">Events Around You</h1>
                 <div>
-                <table>
+                <table className="table table-hover">
                   <thead>
                     <tr>
-                      <th>Title</th>
-                      <th>Description</th>
-                      <th>Date and Time</th>
-                      <th>Latitude</th>
-                      <th>Longitude</th>
-                      <th>Imgurl</th>
-                      <th>Host</th>
-                      <th colSpan="3"></th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Date and Time</th>
+                        <th scope="col">Latitude</th>
+                        <th scope="col">Longitude</th>
+                        <th scope="col">Imgurl</th>
+                        <th scope="col">Host</th>
                     </tr>
                   </thead>
 
