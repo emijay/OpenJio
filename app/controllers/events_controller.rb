@@ -18,6 +18,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @event = Event.find(params[:id])
   end
 
   # GET /events/new
@@ -27,6 +28,14 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @event = Event.find(params[:id])
+    @user = @event.user_id
+
+    if (current_user.id != @user)
+      redirect_to "/events"
+
+    end
+
   end
 
   # POST /events
@@ -38,7 +47,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html redirect_to @event
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -68,12 +77,6 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
-    end
-  end
-
-  def wee
-    respond_to do |format|
-      format.html { render :wee }
     end
   end
 
