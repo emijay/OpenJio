@@ -5,9 +5,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import Wee from '../components/wee'
 import Mainpage from '../components/mainpage'
-import MapContainer from '../components/map'
+import MapContainer from '../components/mapcontainer'
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
