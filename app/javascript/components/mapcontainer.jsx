@@ -8,19 +8,12 @@ import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import CurrentLocation from './map';
 
 
-
-const mapStyles = {
-  width: '100%',
-  height: '100%'
-};
-
 export class MapContainer extends Component {
 
     constructor() {
         super();
         this.state = {
-            locations: [{lat: 1.331659, lng: 103.947926, name: "first location"},
-            {lat: 1.325293, lng: 103.929558, name:"second location"}],
+            locations: [],
             startingPoint: { lat: 1.274495, lng: 103.846146 },
             showingInfoWindow: false,  //Hides or the shows the infoWindow
             activeMarker: {},          //Shows the active marker upon click
@@ -32,7 +25,7 @@ export class MapContainer extends Component {
 
     }
 
-    onMarkerClick(props, marker, event){
+    onMarkerClick(props, marker, event,map){
 
         this.setState({
             selectedPlace: props,
@@ -50,6 +43,30 @@ export class MapContainer extends Component {
           });
         }
     };
+
+    componentDidMount(){
+
+        var request = new XMLHttpRequest();
+
+        var componentThis = this;
+
+        request.addEventListener("load", function(){
+          const responseData = JSON.parse( this.responseText );
+
+          let newArray = componentThis.state.locations;
+
+          responseData.forEach((element) => {
+            newArray.push({ lat: element.latitude, lng: element.longitude, name: element.title })
+          })
+
+          componentThis.setState({ locations: newArray });
+
+        });
+
+        request.open("GET", '/events.json');
+
+        request.send();
+    }
 
     render() {
 

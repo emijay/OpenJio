@@ -11,7 +11,6 @@ import MapContainer from '../components/mapcontainer'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <div>

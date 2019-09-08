@@ -9,7 +9,6 @@ const mapStyles = {
   }
 };
 
-
 export class CurrentLocation extends React.Component {
 
  constructor(props) {
@@ -29,6 +28,7 @@ export class CurrentLocation extends React.Component {
       this.loadMap();
     }
     if (prevState.currentLocation !== this.state.currentLocation) {
+      console.log('we are centering the map')
       this.recenterMap();
     }
   }
@@ -125,11 +125,9 @@ export default CurrentLocation;
 CurrentLocation.defaultProps = {
   zoom: 14,
   initialCenter: {
-    lat: -1.2884,
-    lng: 36.8233
+    lat: 1.3521,
+    lng: 103.8198
   },
-    zoomControl: true,
-
   centerAroundCurrentLocation: false,
   visible: true
 };
