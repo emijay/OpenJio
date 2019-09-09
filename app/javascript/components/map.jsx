@@ -35,6 +35,7 @@ export class CurrentLocation extends React.Component {
 
   recenterMap() {
     const map = this.map;
+    console.log(map)
     const current = this.state.currentLocation;
 
     const google = this.props.google;
@@ -42,6 +43,8 @@ export class CurrentLocation extends React.Component {
 
     if (map) {
       let center = new maps.LatLng(current.lat, current.lng);
+
+      console.log(center)
       map.panTo(center);
     }
   }

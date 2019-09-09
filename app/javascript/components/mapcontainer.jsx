@@ -25,13 +25,34 @@ export class MapContainer extends Component {
 
     }
 
-    onMarkerClick(props, marker, event,map){
+    onMarkerClick(props, marker, event, map, maps){
 
         this.setState({
             selectedPlace: props,
             activeMarker: marker,
             showingInfoWindow: true
         });
+
+        // if (map) {
+        // const latLng = maps.LatLng(lat, lng);
+        // // Makes a latlng
+        // map.panTo(latLng);
+        // }
+        // console.log(latLng)
+
+        map = this.map;
+        google = this.props.google;
+        maps = google.maps;
+
+        console.log(map)
+        console.log(maps.map)
+
+
+        if (map) {
+            let center = new maps.LatLng(10.23,123.45);
+            map.panTo(center);
+        }
+
 
     };
 
@@ -87,6 +108,7 @@ export class MapContainer extends Component {
             google={this.props.google}
           >
             <Marker
+              icon="https://mt.google.com/vt/icon?color=ff004C13&name=icons/spotlight/spotlight-waypoint-blue.png"
               onClick={this.onMarkerClick}
               name={'Current Location'}
             />
