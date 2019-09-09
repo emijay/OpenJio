@@ -5,7 +5,7 @@ const mapStyles = {
   map: {
     position: 'absolute',
     width: '100%',
-    height: '100%'
+    height: '60%'
   }
 };
 
@@ -106,10 +106,10 @@ export class CurrentLocation extends React.Component {
   }
 
   render() {
-     const style = Object.assign({}, mapStyles.map);
+    const style = Object.assign({}, mapStyles.map);
     return (
       <div>
-        <div style={style} ref="map">
+        <div style={style} ref="map" className="container">
           Loading map...
         </div>
         {this.renderChildren()}
@@ -123,7 +123,7 @@ export class CurrentLocation extends React.Component {
 export default CurrentLocation;
 
 CurrentLocation.defaultProps = {
-  zoom: 14,
+  zoom: 18,
   initialCenter: {
     lat: 1.3521,
     lng: 103.8198

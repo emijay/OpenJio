@@ -13,13 +13,19 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <div>
+    <div className="container">
         <Router>
-          <div>
-            <Route path="/" component={Mainpage} />
+          <div className="container">
+            <div className="row">
+                <Route path="/" component={Mainpage} />
+            </div>
           </div>
         </Router>
-        <MapContainer />
+        <div className="container">
+            <div className="row">
+                <MapContainer />
+            </div>
+        </div>
     </div>,
     document.body.appendChild(document.createElement('div')),
   )
