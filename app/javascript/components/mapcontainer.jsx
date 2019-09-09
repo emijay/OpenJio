@@ -17,15 +17,23 @@ export class MapContainer extends Component {
             startingPoint: { lat: 1.274495, lng: 103.846146 },
             showingInfoWindow: false,  //Hides or the shows the infoWindow
             activeMarker: {},          //Shows the active marker upon click
-            selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
+            selectedPlace: {},          //Shows the infoWindow to the selected place upon a marker
+            map: null
         };
 
         this.onMarkerClick = this.onMarkerClick.bind(this);
+        this.getFromCurrentLocation = this.getFromCurrentLocation.bind(this);
         this.onClose = this.onClose.bind(this);
-
     }
 
-    onMarkerClick(props, marker, event, map, maps){
+    getFromCurrentLocation(map){
+        console.log('initiating data transfer')
+
+        this.setState({ map : map });
+
+    };
+
+    onMarkerClick(props, marker, event){
 
         this.setState({
             selectedPlace: props,
@@ -33,26 +41,17 @@ export class MapContainer extends Component {
             showingInfoWindow: true
         });
 
-        // if (map) {
-        // const latLng = maps.LatLng(lat, lng);
-        // // Makes a latlng
-        // map.panTo(latLng);
-        // }
-        // console.log(latLng)
+        let google = this.props.google;
+        let maps = google.maps;
 
-        map = this.map;
-        google = this.props.google;
-        maps = google.maps;
+        let lati = this.state.activeMarker.position.lat()
+        let long = this.state.activeMarker.position.lng()
 
-        console.log(map)
-        console.log(maps.map)
+        let center = new maps.LatLng(lati, long);
 
+        let map = this.state.map;
 
-        if (map) {
-            let center = new maps.LatLng(10.23,123.45);
-            map.panTo(center);
-        }
-
+        map.panTo(center);
 
     };
 
@@ -106,6 +105,7 @@ export class MapContainer extends Component {
           <CurrentLocation
             centerAroundCurrentLocation
             google={this.props.google}
+            sendToMapContainer={this.getFromCurrentLocation}
           >
             <Marker
               icon="https://mt.google.com/vt/icon?color=ff004C13&name=icons/spotlight/spotlight-waypoint-blue.png"

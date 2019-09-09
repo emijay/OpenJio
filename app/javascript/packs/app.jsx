@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <Router>
           <div className="container">
             <div className="row">
-                <Route path="/" component={Mainpage} />
+                <Route path="/" render={()=> (
+                    <Mainpage wee="wee"/>
+                )}   />
             </div>
           </div>
         </Router>

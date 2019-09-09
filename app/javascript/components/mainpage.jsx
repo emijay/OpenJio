@@ -9,6 +9,13 @@ export default class Mainpage extends React.Component{
         this.state = {
             input:[]
         }
+
+        this.onMouseEnter = this.onMouseEnter.bind(this);
+
+    }
+
+    onMouseEnter(stuff){
+        console.log(stuff)
     }
 
     componentDidMount(){
@@ -23,7 +30,7 @@ export default class Mainpage extends React.Component{
 
           // set state to put data in the component
           let array = responseData.map((item,index) => {
-            return(<tr key={index}>
+            return(<tr key={index} onMouseEnter={(stuff) => componentThis.onMouseEnter({index})}>
                         <td>{item.title}</td>
                         <td>{item.description}</td>
                         <td>{item.date}</td>
