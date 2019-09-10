@@ -34,8 +34,6 @@ export default class Mainpage extends React.Component{
                         <td>{item.title}</td>
                         <td>{item.description}</td>
                         <td>{item.date}</td>
-                        <td>{item.latitude}</td>
-                        <td>{item.longitude}</td>
                         <td>{item.user_id}</td>
                     </tr>
             )
@@ -52,17 +50,16 @@ export default class Mainpage extends React.Component{
     render(){
 
         return(
-            <div className="container">
+            <React.Fragment>
+            <div className="mainContainer row">
                 <h1 className="text-center">Events Around You</h1>
-                <div>
+
                 <table className="table table-hover">
                   <thead>
                     <tr>
                         <th scope="col">Title</th>
                         <th scope="col">Description</th>
                         <th scope="col">Date and Time</th>
-                        <th scope="col">Latitude</th>
-                        <th scope="col">Longitude</th>
                         <th scope="col">Host</th>
                     </tr>
                   </thead>
@@ -71,8 +68,9 @@ export default class Mainpage extends React.Component{
                         {this.state.input}
                   </tbody>
                 </table>
-                </div>
+
             </div>
+            </React.Fragment>
         );
     }
 }

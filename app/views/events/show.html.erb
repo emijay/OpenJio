@@ -1,42 +1,28 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+	<p id="notice" style="width: 50rem; margin: 0 auto"><%= notice %></p>
 
-<p>
-  <strong>Date and Time</strong>
-  <%= @event.date %>
-</p>
+	<div class="jumbotron" style="width: 50rem; margin: 0 auto">
+		 <img class="card-img-top" src=<%= @event.imgURL %> >
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @event.latitude %>
-</p>
+	  <h1 class="display-4"><%= @event.title %></h1>
+	  <p class="lead"><%= @event.date %></p>
+	  <p class="lead">Kallang Stadium</p>
+	  <hr class="my-4">
+	  <p><%= @event.description %></p>
+	  <p>Hosted By: <%= @event.user_id %></p>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @event.longitude %>
-</p>
+		<% if user_signed_in? && current_user.id == @event.user.id %>
 
-<p>
-  <strong>Imgurl:</strong>
-  <%= @event.imgURL %>
-</p>
+		<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-primary btn-lg" %>
 
-<p>
-  <strong>Host:</strong>
-  <%= @event.user_id %>
-</p>
+		<%= link_to 'Back', events_path, class: "btn btn-primary btn-lg" %>
 
-<% if user_signed_in? && current_user.id == @event.user.id %>
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<% end %>
+		<% end %>
 
-<%= link_to 'Back', events_path %>
+
+
+
+
+</div>

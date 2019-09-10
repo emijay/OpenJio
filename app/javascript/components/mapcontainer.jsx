@@ -101,6 +101,7 @@ export class MapContainer extends Component {
         });
 
         return (
+        <div className="row">
           <CurrentLocation
             centerAroundCurrentLocation
             google={this.props.google}
@@ -124,6 +125,7 @@ export class MapContainer extends Component {
               </div>
             </InfoWindow>
           </CurrentLocation>
+        </div>
         );
     }
 }

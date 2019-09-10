@@ -31,21 +31,8 @@ export default class App extends React.Component{
         return (
             <React.Fragment>
                 <div className="container">
-                    <Router>
-                      <div className="container">
-                        <div className="row">
-                            <Route path="/" render={()=> (
-                                <Mainpage sendData={this.setActiveMarker}
-                                />
-                            )}   />
-                        </div>
-                      </div>
-                    </Router>
-                    <div className="container">
-                        <div className="row">
-                            <MapContainer sendData={this.setActiveMarker}/>
-                        </div>
-                    </div>
+                    <MapContainer sendData={this.setActiveMarker} />
+                    <Mainpage sendData={this.setActiveMarker} />
                 </div>
             </React.Fragment>
         )
@@ -56,7 +43,12 @@ export default class App extends React.Component{
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App/>,
+  ReactDOM.render(
+    <Router>
+        <Route path="/" render={()=>(
+            <App />
+        )} />
+    </Router>,
     document.body.appendChild(document.createElement('div')),
   )
 })
