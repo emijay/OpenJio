@@ -14,8 +14,8 @@ export default class Mainpage extends React.Component{
 
     }
 
-    onMouseEnter(stuff){
-        console.log(stuff)
+    onMouseEnter(lati,long){
+        this.props.sendData(lati,long);
     }
 
     componentDidMount(){
@@ -30,13 +30,12 @@ export default class Mainpage extends React.Component{
 
           // set state to put data in the component
           let array = responseData.map((item,index) => {
-            return(<tr key={index} onMouseEnter={(stuff) => componentThis.onMouseEnter({index})}>
+            return(<tr key={index} onMouseEnter={ (lati,long) => componentThis.onMouseEnter(item.latitude, item.longitude) }>
                         <td>{item.title}</td>
                         <td>{item.description}</td>
                         <td>{item.date}</td>
                         <td>{item.latitude}</td>
                         <td>{item.longitude}</td>
-                        <td>{item.imgURL}</td>
                         <td>{item.user_id}</td>
                     </tr>
             )
@@ -64,7 +63,6 @@ export default class Mainpage extends React.Component{
                         <th scope="col">Date and Time</th>
                         <th scope="col">Latitude</th>
                         <th scope="col">Longitude</th>
-                        <th scope="col">Imgurl</th>
                         <th scope="col">Host</th>
                     </tr>
                   </thead>

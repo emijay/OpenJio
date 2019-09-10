@@ -10,25 +10,53 @@ import MapContainer from '../components/mapcontainer'
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+export default class App extends React.Component{
+
+    constructor() {
+        super();
+        this.state = {
+            map: null
+        }
+
+        this.setActiveMarker = this.setActiveMarker.bind(this);
+    }
+
+    setActiveMarker(props,marker,val) {
+        // console.log('setting active marker')
+        // console.log(props)
+        // console.log(marker)
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <div className="container">
+                    <Router>
+                      <div className="container">
+                        <div className="row">
+                            <Route path="/" render={()=> (
+                                <Mainpage sendData={this.setActiveMarker}
+                                />
+                            )}   />
+                        </div>
+                      </div>
+                    </Router>
+                    <div className="container">
+                        <div className="row">
+                            <MapContainer sendData={this.setActiveMarker}/>
+                        </div>
+                    </div>
+                </div>
+            </React.Fragment>
+        )
+    }
+
+
+
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <div className="container">
-        <Router>
-          <div className="container">
-            <div className="row">
-                <Route path="/" render={()=> (
-                    <Mainpage wee="wee"/>
-                )}   />
-            </div>
-          </div>
-        </Router>
-        <div className="container">
-            <div className="row">
-                <MapContainer />
-            </div>
-        </div>
-    </div>,
+  ReactDOM.render(<App/>,
     document.body.appendChild(document.createElement('div')),
   )
 })
