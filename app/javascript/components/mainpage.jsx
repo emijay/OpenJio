@@ -27,14 +27,14 @@ export default class Mainpage extends React.Component{
         request.addEventListener("load", function(){
           const responseData = JSON.parse( this.responseText );
           let datetime = responseData[0].date
-          console.log( Date.parse(datetime));
+          console.log( moment(datetime).format('llll'));
 
           // set state to put data in the component
           let array = responseData.map((item,index) => {
             return(<tr key={index} onMouseEnter={ (lati,long) => componentThis.onMouseEnter(item.latitude, item.longitude) }>
                         <td>{item.title}</td>
                         <td>{item.description}</td>
-                        <td>{item.date}</td>
+                        <td>{moment(item.date).format('llll')}</td>
                     </tr>
             )
           })
