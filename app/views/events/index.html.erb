@@ -12,7 +12,7 @@
     		<div class="card-body">
 	      	<h3 class="card-title"><%= event.title %></h3>
 	      	<h5 class="card-title"><%= event.date.strftime("%A, %d %b %y, %H:%M%p") %></h5>
-	      	<h5 class="card-title">Location</h5>
+	      	<h5 class="card-title"><%= event.location %></h5>
 	      	<p class="card-text"><%= event.description %></p>
 	      	<p class="card-text">Hosted by: <%= event.user.name %></p>
 	     	</div>

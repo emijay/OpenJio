@@ -26,8 +26,6 @@ export default class Mainpage extends React.Component{
 
         request.addEventListener("load", function(){
           const responseData = JSON.parse( this.responseText );
-          let datetime = responseData[0].date
-          console.log( moment(datetime).format('llll'));
 
           // set state to put data in the component
           let array = responseData.map((item,index) => {
