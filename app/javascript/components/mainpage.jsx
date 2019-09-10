@@ -26,7 +26,8 @@ export default class Mainpage extends React.Component{
 
         request.addEventListener("load", function(){
           const responseData = JSON.parse( this.responseText );
-          // console.log( responseData );
+          let datetime = responseData[0].date
+          console.log( Date.parse(datetime));
 
           // set state to put data in the component
           let array = responseData.map((item,index) => {
@@ -34,7 +35,6 @@ export default class Mainpage extends React.Component{
                         <td>{item.title}</td>
                         <td>{item.description}</td>
                         <td>{item.date}</td>
-                        <td>{item.user_id}</td>
                     </tr>
             )
           })
@@ -52,15 +52,12 @@ export default class Mainpage extends React.Component{
         return(
             <React.Fragment>
             <div className="mainContainer row">
-                <h1 className="text-center">Events Around You</h1>
-
                 <table className="table table-hover">
                   <thead>
                     <tr>
                         <th scope="col">Title</th>
                         <th scope="col">Description</th>
                         <th scope="col">Date and Time</th>
-                        <th scope="col">Host</th>
                     </tr>
                   </thead>
 

@@ -10,20 +10,22 @@
     	<div class="card">
     		<img class="card-img-top" alt="..." src=<%= event.imgURL %> />
     		<div class="card-body">
-	      	<h5 class="card-title"><%= event.title %></h5>
-	      	<h5 class="card-title"><%= event.date %></h5>
+	      	<h3 class="card-title"><%= event.title %></h3>
+	      	<h5 class="card-title"><%= event.date.strftime("%A, %d %b %y, %H:%M%p") %></h5>
 	      	<h5 class="card-title">Location</h5>
 	      	<p class="card-text"><%= event.description %></p>
-	      	<p class="card-text">Hosted by: <%= event.user_id %></p>
-	      	<%= link_to 'Show', event %>
+	      	<p class="card-text">Hosted by: <%= event.user.name %></p>
+	     	</div>
+	      	<div class="card-footer">
+	      		<%= link_to 'Show', event %>
 
-	      	<% if user_signed_in? %>
-	        	<% if current_user.id == event.user.id%>
-	        		<%= link_to 'Edit', edit_event_path(event) %>
-	        		<%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
-	        	<% end %>
-	  			<% end %>
-	    	</div>
+		      	<% if user_signed_in? %>
+		        	<% if current_user.id == event.user.id%>
+		        		| <%= link_to 'Edit', edit_event_path(event) %> |
+		        		<%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+		        	<% end %>
+		  			<% end %>
+		  		</div>
 	  	</div>
     <% end %>
   </div>

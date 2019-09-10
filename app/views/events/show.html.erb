@@ -1,28 +1,25 @@
 
 <div class="container">
 
-	<p id="notice" style="width: 50rem; margin: 0 auto"><%= notice %></p>
+	<p id="notice" style="width: 45rem; margin: 0 auto"><%= notice %></p>
 
-	<div class="jumbotron" style="width: 50rem; margin: 0 auto">
+	<div class="jumbotron" style="width: 45rem; margin: 0 auto">
 		 <img class="card-img-top" src=<%= @event.imgURL %> >
 
 	  <h1 class="display-4"><%= @event.title %></h1>
-	  <p class="lead"><%= @event.date %></p>
-	  <p class="lead">Kallang Stadium</p>
+	  <p class="lead"><%= @event.date.strftime("%A, %d %b %y, %H:%M%p")  %></p>
+	  <p class="lead"><%= @event.location %></p>
 	  <hr class="my-4">
-	  <p><%= @event.description %></p>
-	  <p>Hosted By: <%= @event.user_id %></p>
+	  <p class="lead"><%= @event.description %></p>
+	  <p class="lead">Hosted By: <%= @event.user.name%></p>
+		<br/>
+		<% if user_signed_in? && current_user.id == @event.user_id %>
 
-		<% if user_signed_in? && current_user.id == @event.user.id %>
-
-		<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-primary btn-lg" %>
-
-		<%= link_to 'Back', events_path, class: "btn btn-primary btn-lg" %>
+			<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-light" %>
 
 		<% end %>
 
-
-
+		<%= link_to 'Back', events_path, class: "btn btn-light" %>
 
 
 </div>

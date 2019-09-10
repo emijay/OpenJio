@@ -102,6 +102,7 @@ export class MapContainer extends Component {
 
         return (
         <div className="row">
+            <h1 className="position-absolute" style={{left: '50%', transform: 'translate(-50%, 0)'}}>Events Around You</h1>
           <CurrentLocation
             centerAroundCurrentLocation
             google={this.props.google}
@@ -118,10 +119,8 @@ export class MapContainer extends Component {
               visible={this.state.showingInfoWindow}
               onClose={this.onClose}
             >
-              <div className="card" style={{width: '15rem'}}>
-                <div className="card-body">
+              <div className="container text-center" style={{width: '13rem'}}>
                     <h5>{this.state.selectedPlace.name}</h5>
-                </div>
               </div>
             </InfoWindow>
           </CurrentLocation>
