@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :except => [ :show, :index ]
+  before_action :authenticate_user!, :except => [ :mainpage, :show, :index ]
 
 
   def mainpage
