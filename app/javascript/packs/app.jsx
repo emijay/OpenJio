@@ -31,8 +31,7 @@ export default class App extends React.Component{
         return (
             <React.Fragment>
                 <div className="container">
-                    <MapContainer sendData={this.setActiveMarker} />
-                    <Mainpage sendData={this.setActiveMarker} />
+                    <MapContainer />
                 </div>
             </React.Fragment>
         )

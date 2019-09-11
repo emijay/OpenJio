@@ -109,7 +109,6 @@ export class MapContainer extends Component {
         let infostuff = (
                 <div>
                     <h5>{this.state.selectedPlace.name}</h5>
-
                     <a href="/events" className="card-link">Show details</a>
                 </div>
         )
@@ -134,7 +133,7 @@ export class MapContainer extends Component {
                 visible={this.state.showingInfoWindow}
                 onClose={this.onClose}
             >
-            {infostuff}
+                {infostuff}
             </InfoWindowEx>
           </CurrentLocation>
         </div>
