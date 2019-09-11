@@ -52,6 +52,8 @@ export class MapContainer extends Component {
 
         map.panTo(center);
 
+        console.log(this.state.selectedPlace)
+
     };
 
     onClose(props){
@@ -95,7 +97,7 @@ export class MapContainer extends Component {
                 key={i}
                 onClick={this.setActiveMarker}
                 position={{ lat: location.lat, lng: location.lng }}
-                name={location.name}
+                name={[ location.name, location.description ]}
               />
             )
         });
@@ -118,8 +120,9 @@ export class MapContainer extends Component {
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}
               onClose={this.onClose}
+              content="sometstring"
             >
-              <div className="container text-center" style={{width: '13rem'}}>
+              <div className="container text-center" style={{width: '10rem'}}>
                     <h5>{this.state.selectedPlace.name}</h5>
               </div>
             </InfoWindow>
