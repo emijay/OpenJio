@@ -5,15 +5,15 @@
 
 	<h1 class="text-center">Events</h1>
 
-	<div class="card-deck">
+	<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
     <% @events.each do |event| %>
-    	<div class="card">
-    		<img class="card-img-top" alt="..." src=<%= event.imgURL %> />
+    	<div class="card mb-4" style="width: 18rem">
+    		<img style="height: 200px;" class="card-img-top" alt="..." src=<%= event.imgURL %> />
     		<div class="card-body">
 	      	<h3 class="card-title"><%= event.title %></h3>
 	      	<h5 class="card-title"><%= event.date.strftime("%A, %d %b %y, %H:%M%p") %></h5>
-	      	<h5 class="card-title"><%= event.location %></h5>
-	      	<p class="card-text"><%= event.description %></p>
+	      	<h5 class="card-title font-weight-light mb-3"><%= event.location %></h5>
+	      	<p class="card-text mb-4"><%= event.description %></p>
 	      	<p class="card-text">Hosted by: <%= event.user.name %></p>
 	     	</div>
 	      	<div class="card-footer">
@@ -28,6 +28,6 @@
 		  		</div>
 	  	</div>
     <% end %>
-  </div>
+	</div>
 
 </div>

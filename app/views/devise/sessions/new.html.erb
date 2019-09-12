@@ -1,3 +1,13 @@
+
+<div class="container">
+	<div class="jumbotron" style="position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%)">
+		<div class="row no-gutters">
+
+    	<div class="col-md-6 pl-5">
+
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -24,3 +34,14 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+    	</div>
+
+    	<div class="col-md-6">
+      	<img src="https://images.unsplash.com/photo-1528185796833-c5827a298584?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=935&q=80" class="card-img" alt="...">
+    	</div>
+
+		</div>
+	 </div>
+</div>

@@ -1,9 +1,12 @@
 
 <div class="container">
-	<div class="jumbotron">
+	<div class="jumbotron" style="position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%)">
 		<div class="row no-gutters">
 
-    	<div class="col-md-8 pl-5">
+    	<div class="col-md-6 pl-5">
 				<h2>Sign up</h2>
 
 				<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -40,7 +43,7 @@
 				<%= render "devise/shared/links" %>
     	</div>
 
-    	<div class="col-md-4">
+    	<div class="col-md-6">
       	<img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img" alt="...">
     	</div>
 

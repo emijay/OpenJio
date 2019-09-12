@@ -7,6 +7,9 @@ import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 
 import CurrentLocation from './map';
 
+import InfoWindowEx from "./infowindowex";
+
+
 
 export class MapContainer extends Component {
 
@@ -95,10 +98,20 @@ export class MapContainer extends Component {
                 key={i}
                 onClick={this.setActiveMarker}
                 position={{ lat: location.lat, lng: location.lng }}
-                name={location.name}
+                name={ location.name }
+                title= { location.description }
+
               />
             )
         });
+
+        // InfoWindow content
+        let infostuff = (
+                <div>
+                    <h5>{this.state.selectedPlace.name}</h5>
+                    <a href="/events" className="card-link">Show details</a>
+                </div>
+        )
 
         return (
         <div className="row">
@@ -114,15 +127,14 @@ export class MapContainer extends Component {
               name={'Current Location'}
             />
             {marker}
-            <InfoWindow
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}
-              onClose={this.onClose}
+
+            <InfoWindowEx
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
             >
-              <div className="container text-center" style={{width: '13rem'}}>
-                    <h5>{this.state.selectedPlace.name}</h5>
-              </div>
-            </InfoWindow>
+                {infostuff}
+            </InfoWindowEx>
           </CurrentLocation>
         </div>
         );
