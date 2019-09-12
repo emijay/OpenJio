@@ -14,8 +14,8 @@ export default class Mainpage extends React.Component{
 
     }
 
-    onMouseEnter(stuff){
-        console.log(stuff)
+    onMouseEnter(lati,long){
+        this.props.sendData(lati,long);
     }
 
     componentDidMount(){
@@ -26,18 +26,13 @@ export default class Mainpage extends React.Component{
 
         request.addEventListener("load", function(){
           const responseData = JSON.parse( this.responseText );
-          // console.log( responseData );
 
           // set state to put data in the component
           let array = responseData.map((item,index) => {
-            return(<tr key={index} onMouseEnter={(stuff) => componentThis.onMouseEnter({index})}>
+            return(<tr key={index} onMouseEnter={ (lati,long) => componentThis.onMouseEnter(item.latitude, item.longitude) }>
                         <td>{item.title}</td>
                         <td>{item.description}</td>
-                        <td>{item.date}</td>
-                        <td>{item.latitude}</td>
-                        <td>{item.longitude}</td>
-                        <td>{item.imgURL}</td>
-                        <td>{item.user_id}</td>
+                        <td>{moment(item.date).format('llll')}</td>
                     </tr>
             )
           })
@@ -53,19 +48,14 @@ export default class Mainpage extends React.Component{
     render(){
 
         return(
-            <div className="container">
-                <h1 className="text-center">Events Around You</h1>
-                <div>
+            <React.Fragment>
+            <div className="mainContainer row">
                 <table className="table table-hover">
                   <thead>
                     <tr>
                         <th scope="col">Title</th>
                         <th scope="col">Description</th>
                         <th scope="col">Date and Time</th>
-                        <th scope="col">Latitude</th>
-                        <th scope="col">Longitude</th>
-                        <th scope="col">Imgurl</th>
-                        <th scope="col">Host</th>
                     </tr>
                   </thead>
 
@@ -73,8 +63,9 @@ export default class Mainpage extends React.Component{
                         {this.state.input}
                   </tbody>
                 </table>
-                </div>
+
             </div>
+            </React.Fragment>
         );
     }
 }

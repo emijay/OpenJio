@@ -1,6 +1,12 @@
-<h1>Editing Event</h1>
 
-<%= render 'form', event: @event %>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<div class="container position-absolute card bg-light my-3 "
+style="left: 50%; text-align: center; transform: translate(-50%,0); max-width: 40rem;">
+
+	<h1 class="my-4">Edit Events</h1>
+
+	<%= render 'form', event: @event %>
+
+	<%= link_to 'Back', events_path, class:'mb-3' %>
+
+</div>

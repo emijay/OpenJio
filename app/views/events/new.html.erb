@@ -1,5 +1,11 @@
-<h1>New Event</h1>
+
+<div class="container position-absolute card bg-light my-3"
+style="left: 50%; text-align: center; transform: translate(-50%,0); max-width: 40rem;">
+
+<h1 class="my-4">New Event</h1>
 
 <%= render 'form', event: @event %>
 
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', events_path, class:'mb-3'%>
+
+</div>

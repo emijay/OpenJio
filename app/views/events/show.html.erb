@@ -1,42 +1,25 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+	<p id="notice" style="width: 45rem; margin: 0 auto"><%= notice %></p>
 
-<p>
-  <strong>Date and Time</strong>
-  <%= @event.date %>
-</p>
+	<div class="jumbotron" style="width: 45rem; margin: 0 auto">
+		 <img class="card-img-top" src=<%= @event.imgURL %> >
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @event.latitude %>
-</p>
+	  <h1 class="display-4"><%= @event.title %></h1>
+	  <p class="lead"><%= @event.date.strftime("%A, %d %b %y, %H:%M%p")  %></p>
+	  <p class="lead"><%= @event.location %></p>
+	  <hr class="my-4">
+	  <p class="lead"><%= @event.description %></p>
+	  <p class="lead">Hosted By: <%= @event.user.name%></p>
+		<br/>
+		<% if user_signed_in? && current_user.id == @event.user_id %>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @event.longitude %>
-</p>
+			<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-light" %>
 
-<p>
-  <strong>Imgurl:</strong>
-  <%= @event.imgURL %>
-</p>
+		<% end %>
 
-<p>
-  <strong>Host:</strong>
-  <%= @event.user_id %>
-</p>
+		<%= link_to 'Back', events_path, class: "btn btn-light" %>
 
-<% if user_signed_in? && current_user.id == @event.user.id %>
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<% end %>
 
-<%= link_to 'Back', events_path %>
+</div>

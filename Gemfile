@@ -53,4 +53,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
-# gem 'bootstrap', '~> 4.3.1'

@@ -21,19 +21,18 @@ export class MapContainer extends Component {
             map: null
         };
 
-        this.onMarkerClick = this.onMarkerClick.bind(this);
+        this.setActiveMarker = this.setActiveMarker.bind(this);
         this.getFromCurrentLocation = this.getFromCurrentLocation.bind(this);
         this.onClose = this.onClose.bind(this);
     }
 
+    // this is to get the 'map' class from CurrentLocation component
     getFromCurrentLocation(map){
-        console.log('initiating data transfer')
-
         this.setState({ map : map });
 
     };
 
-    onMarkerClick(props, marker, event){
+    setActiveMarker(props, marker, event){
 
         this.setState({
             selectedPlace: props,
@@ -64,6 +63,7 @@ export class MapContainer extends Component {
         }
     };
 
+    // this makes an AJAX call to the events page
     componentDidMount(){
 
         var request = new XMLHttpRequest();
@@ -76,11 +76,10 @@ export class MapContainer extends Component {
           let newArray = componentThis.state.locations;
 
           responseData.forEach((element) => {
-            newArray.push({ lat: element.latitude, lng: element.longitude, name: element.title })
+            newArray.push({ lat: element.latitude, lng: element.longitude, name: element.title, description: element.description })
           })
 
           componentThis.setState({ locations: newArray });
-
         });
 
         request.open("GET", '/events.json');
@@ -94,7 +93,7 @@ export class MapContainer extends Component {
             return (
               <Marker
                 key={i}
-                onClick={this.onMarkerClick}
+                onClick={this.setActiveMarker}
                 position={{ lat: location.lat, lng: location.lng }}
                 name={location.name}
               />
@@ -102,6 +101,8 @@ export class MapContainer extends Component {
         });
 
         return (
+        <div className="row">
+            <h1 className="position-absolute" style={{left: '50%', transform: 'translate(-50%, 0)'}}>Events Around You</h1>
           <CurrentLocation
             centerAroundCurrentLocation
             google={this.props.google}
@@ -109,7 +110,7 @@ export class MapContainer extends Component {
           >
             <Marker
               icon="https://mt.google.com/vt/icon?color=ff004C13&name=icons/spotlight/spotlight-waypoint-blue.png"
-              onClick={this.onMarkerClick}
+              onClick={this.setActiveMarker}
               name={'Current Location'}
             />
             {marker}
@@ -118,11 +119,12 @@ export class MapContainer extends Component {
               visible={this.state.showingInfoWindow}
               onClose={this.onClose}
             >
-              <div>
-                <p>{this.state.selectedPlace.name}</p>
+              <div className="container text-center" style={{width: '13rem'}}>
+                    <h5>{this.state.selectedPlace.name}</h5>
               </div>
             </InfoWindow>
           </CurrentLocation>
+        </div>
         );
     }
 }
