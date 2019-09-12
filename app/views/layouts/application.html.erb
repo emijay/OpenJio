@@ -25,7 +25,7 @@
         		<a class="nav-link text-white" href="/">Home<span class="sr-only">(current)</span></a>
       		</li>
       		<li class="nav-item">
-        		<a class="nav-link text-white" href="/events">Events Around You</a>
+        		<a class="nav-link text-white" href="/events">Events List</a>
       		</li>
       		<li class="nav-item">
         		<a class="nav-link text-white" href="/events/new">Create New Event</a>
@@ -36,7 +36,7 @@
       		<% if user_signed_in? %>
 						<%= link_to 'Log Out', destroy_user_session_url, method: :delete , style:'color:white'%>
 						<% else %>
-						<%= link_to 'Log In', new_user_session_url %>
+						<%= link_to 'Log In', new_user_session_url,style:'color:white' %>
 					<% end %>
     		</form>
 	  	</div>
