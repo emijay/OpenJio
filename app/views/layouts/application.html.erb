@@ -36,7 +36,7 @@
       		<% if user_signed_in? %>
 						<%= link_to 'Log Out', destroy_user_session_url, method: :delete , style:'color:white'%>
 						<% else %>
-						<%= link_to 'Log In', new_user_session_url %>
+						<%= link_to 'Log In', new_user_session_url, style:'color:white'%>
 					<% end %>
     		</form>
 	  	</div>
