@@ -8,7 +8,7 @@ export default class Mainpage extends React.Component{
         super();
         this.state = {
             input:[]
-        }
+        };
 
         this.onMouseEnter = this.onMouseEnter.bind(this);
 
@@ -34,10 +34,10 @@ export default class Mainpage extends React.Component{
                         <td>{item.description}</td>
                         <td>{moment(item.date).format('llll')}</td>
                     </tr>
-            )
+            );
           })
 
-          componentThis.setState({input: array})
+          componentThis.setState({input: array});
         });
 
         request.open("GET", '/events.json');

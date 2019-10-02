@@ -29,7 +29,7 @@ export class CurrentLocation extends React.Component {
       this.loadMap();
     }
     if (prevState.currentLocation !== this.state.currentLocation) {
-      console.log('we are centering the map')
+      console.log('we are centering the map');
       this.recenterMap();
     }
   }
@@ -45,7 +45,7 @@ export class CurrentLocation extends React.Component {
       let center = new maps.LatLng(current.lat, current.lng);
 
       map.panTo(center);
-      this.props.sendToMapContainer(map)
+      this.props.sendToMapContainer(map);
     }
   }
 

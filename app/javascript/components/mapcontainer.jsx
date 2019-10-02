@@ -46,8 +46,8 @@ export class MapContainer extends Component {
         let google = this.props.google;
         let maps = google.maps;
 
-        let lati = this.state.activeMarker.position.lat()
-        let long = this.state.activeMarker.position.lng()
+        let lati = this.state.activeMarker.position.lat();
+        let long = this.state.activeMarker.position.lng();
 
         let center = new maps.LatLng(lati, long);
 
@@ -100,7 +100,6 @@ export class MapContainer extends Component {
                 position={{ lat: location.lat, lng: location.lng }}
                 name={ location.name }
                 title= { location.description }
-
               />
             )
         });
